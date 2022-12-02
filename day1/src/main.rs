@@ -1,16 +1,7 @@
-use std::collections::BinaryHeap;
 use anyhow::Result;
+use std::collections::BinaryHeap;
 
-use std::fs::File;
-use std::io::{BufRead, BufReader, Lines};
-use std::iter::Flatten;
-
-type FlattenedLines = Flatten<Lines<BufReader<File>>>;
-
-fn open_file(input: &str) -> Result<FlattenedLines> {
-    let file = File::open(input)?;
-    Ok(BufReader::new(file).lines().flatten())
-}
+use common::{open_file, FlattenedLines};
 
 fn part1(lines: &mut FlattenedLines) -> Result<String> {
     let mut max = i32::MIN;
